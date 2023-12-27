@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div>
+    {% if user.picture %}
+        <img src="{{ user.picture }}" width="50" height="65" style="display : inline-block;">
+    
+    
+    {% else %}
+        <img src="https://images.unsplash.com/photo-1702988319113-051682d600a4?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" widht="50" height="65" style="display : inline-block;">
+    {% endif %}
+    <h1 style="display: inline-block;">{{ user.first_name }} {{ user.last_name }}</h1>
+
+
+
+
+        <form action="/single_user_edit/{{ user.id }}">
+        <button type="submit">Edit</button>
+        </form>
+
+
+        <form action="/single_user_delete/{{ user.id }}" style="display : inline-block;">
+        <button type="submit" style="display : inline-block;">Delete</button>
+        </form>
+</div>
+<section>
+    <h2>Posts</h2>
+    <!------------------------------------------------->
+    {% for post in user.posts %}
+
+        <a href = '/individual_post/{{ post.id }}'>{{post.title}}</a>
+    {% endfor %}
+    <form action="/post_form/{{ user.id }}">
+        <button type="submit">Add Post</button>
+    </form>
+</section>
+
+{% endblock %}
+```

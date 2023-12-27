@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<h1>Edit Post</h1>
+    <form action="/edited_post/{{post.id}}" method="POST">
+        <label for="title">Title</label>
+        <input type="text" style="padding : 10px;" name="title" value="{{post.title}}"><br>
+
+        <label for="post">Post</label> 
+        <input type="text" style="padding : 10px; height : 100px;" name="post" value={{post.post}}><br>
+
+        <button type="submit" style="padding : 10px;">Change</button>
+    </form>
+
+    <form action="/single_user_page/{{post.user_id}}">
+        <button style="padding : 10px; display : inline-block;">Cancel</button>
+    </form> 
+
+{% endblock %}
